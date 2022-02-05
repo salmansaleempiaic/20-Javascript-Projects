@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quote Generator</title>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./index.css" />
+    <!-- Fontawesome -->
+    <script
+      src="https://kit.fontawesome.com/a8ab046ff1.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="quote-container" id="quote-container">
+      <div class="quote-text">
+        <span><i class="fas fa-quote-left"></i></span>
+        <span class="quote" id="quote"></span>
+      </div>
+      <div class="quote-author">
+        <div class="author" id="author"></div>
+      </div>
+      <div class="buttons-container">
+        <button class="twitter-btn" id="twitter" title="Tweet This!">
+          <i class="fab fa-twitter"></i>
+        </button>
+        <button id="new-quote" title="Get New Quote">Next Quote</button>
+      </div>
+    </div>
+    <div class="loader" id="loader"></div>
+    <script src="./index.js"></script>
+  </body>
+</html>
