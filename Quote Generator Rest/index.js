@@ -8,19 +8,17 @@ const twitter = document.getElementById("twitter")
 const newQuoteBtn = document.getElementById("new-quote")
 const loader = document.getElementById("loader")
 
-// Show Loader
-const loading = () => {
+const showLoadingSpinner = () => {
     loader.hidden = false;
     quoteContainer.hidden = true
 }
-// Hide Loader
-const complete = () => {
+const removeLoadingSpinner = () => {
     loader.hidden = true;
     quoteContainer.hidden = false
 }
 
-const getQuote = async () => {
-    loading();
+const getQuoteFromAPI = async () => {
+    showLoadingSpinner();
     const proxy = "https://cors-anywhere.herokuapp.com/";
     const apiURL = "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json";
     try{
@@ -28,10 +26,10 @@ const getQuote = async () => {
         const data = await response.json();
         authorText.innerText = data.quoteAuthor;
         quoteText.innerText = data.quoteText;
-        complete();
+        removeLoadingSpinner();
     }
     catch(error){
-        getQuote();
+        getQuoteFromAPI();
     }
 }
 
@@ -39,5 +37,5 @@ newQuoteBtn.addEventListener("click",getQuote);
 
 // Onload
 
-getQuote();
+getQuoteFromAPI();
 // If still not working then open the proxy in the chrome and get click get temporary access and it will work
