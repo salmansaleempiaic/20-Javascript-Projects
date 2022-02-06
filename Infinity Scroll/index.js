@@ -1,22 +1,12 @@
 let photosArray = [];
 const imageContainer = document.getElementById("image-container");
 const loader = document.getElementById("loader");
-// Unsplash API
-const count = 30;
+let count = 5;
 let ready = false;
 let imagesLoaded = 0;
 let totalImages = 0;
 const apiKEY = "n2D1GFO9VIFVbW5ZSsOLJhHrkMaTUGqKIZs2GnWLUZY";
-const apiURL = `https://api.unsplash.com/photos/random?client_id=${apiKEY}&count=${count}`;
-
-const showLoader = () =>{
-    loader.hidden = false;
-    imageContainer.hidden = true;
-}
-const hideLoader = () => {
-    loader.hidden = true;
-    imageContainer.hidden = false;
-}
+let apiURL = `https://api.unsplash.com/photos/random?client_id=${apiKEY}&count=${count}`;
 
 const setAttributes = (element,attribute) => {
     for(const key in attribute){
@@ -28,7 +18,8 @@ const imageLoaded = () => {
     imagesLoaded++;
     if(imagesLoaded === totalImages){
         ready = true;
-        console.log("ready = ", ready);
+        count = 30;
+        apiURL = `https://api.unsplash.com/photos/random?client_id=${apiKEY}&count=${count}`;
     }
 }
 
@@ -40,16 +31,15 @@ const displayPhotos = () => {
         const img = document.createElement("img");
         setAttributes(img,{src:photo.urls.regular,alt:photo.alt_description,title:photo.alt_description});
         // Event Listener, Check when each image is done loading
-        img.addEventListener("load",imageLoaded)
+        img.addEventListener("load",imageLoaded);
         // Put <img> inside <a> then <a> into <img container>
         item.appendChild(img);
         imageContainer.appendChild(item);
     });
-    // hideLoader();
 }
 
+// Unsplash API
 const getPhotosFromUnsplash = async () => {
-    // showLoader()
     try{
         const response = await fetch(apiURL);
         photosArray = await response.json();
@@ -65,9 +55,9 @@ const getPhotosFromUnsplash = async () => {
 
 window.addEventListener("scroll",()=>{
     if(window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000 && ready){
-        ready = true;
+        ready = false;
+        imagesLoaded = 0;
         getPhotosFromUnsplash();
-        console.log("loadmore");
     }
 })
 
