@@ -6,7 +6,6 @@ const toggleNav = () => {
     if(menuBars.classList.contains("change")){
         overlay.classList.replace("overlay-slide-left","overlay-slide-right")
         navItems.forEach((e,i)=>{
-            console.log(e,`slide-out-${i+1}`,`slide-in-${i+1}`)
             e.classList.replace(`slide-out-${i+1}`,`slide-in-${i+1}`)
         })
     }
