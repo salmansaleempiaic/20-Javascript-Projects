@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body * {
+  /* all: unset; */
+}
+body {
+  background: #45badd;
+}
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: url("./Joke\ Teller.gif");
+  background-size: contain;
+  background-position: left center;
+  background-repeat: no-repeat;
+}
+#button {
+  all: unset;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  background: palevioletred;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 1s ease-in-out;
+  /* transform: scale(1); */
+}
+#button:hover {
+  box-shadow: inset;
+  box-shadow: inset 187px 0px 0px 0px white;
+  color: palevioletred;
+}
+#button:focus {
+  /* transform: scale(0.9); */
+}
